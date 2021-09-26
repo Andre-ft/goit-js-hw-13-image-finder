@@ -6,7 +6,7 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const FriendlyErrorsWebpackPlugin = require("friendly-errors-webpack-plugin");
 const WebpackBar = require("webpackbar");
 
-const ASSET_PATH = process.env.ASSET_PATH || '/goit-js-hw-13-image-finder/';
+const ASSET_PATH = process.env.ASSET_PATH || '/';
 // /goit-js-hw-13-image-finder/
 const loadModeConfig = (env) =>
   require(`./build-utils/${env.mode}.config.js`)(env);
