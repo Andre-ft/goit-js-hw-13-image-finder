@@ -143,3 +143,15 @@ p.stats-item {
 .basicLightbox--visible .basicLightbox__placeholder {
   transform: scale(1);
 }
+
+.modal-btn-close {
+  position: fixed;
+  top: 5px;
+  right: 5px;
+  width: 20px;
+  height: 20px;
+  color: white;
+  border-radius: 50%;
+  border-color: white;
+  font-size: 15px;
+}

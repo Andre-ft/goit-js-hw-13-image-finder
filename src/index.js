@@ -54,8 +54,8 @@ function onImageClick(e) {
     const alt = e.target.alt;
     // log('e.target', e.target);
 
-    const instance = basicLightbox.create(`
-	<img src="${imgSrc}" alt="${alt}" />
+  const instance = basicLightbox.create(`
+      <img src="${imgSrc}" alt="${alt}" />
 `);
     instance.show();
 }
@@ -73,8 +73,14 @@ function onSearchForm(e) {
 
 function fetchArticles() {
     loadMoreBtn.disable();
-    apiService.fetchArticles().then(articles => {      
+  apiService.fetchArticles()
+    .then(articles => {
         // log('articles', articles);
+      if (articles.length === 0) {
+        alert(notificationOptions.text = "Sorry, nothing to show, please specify your query.");
+        // clearArticlesContainer();
+        return;
+      }
         appendArticlesMarkup(articles);
         loadMoreBtn.enable();
         element.scrollIntoView({
@@ -82,7 +88,11 @@ function fetchArticles() {
             block: 'end',
         });
         success(notificationOptions.text = "12 images is loaded")
-  });  
+    })
+    .catch(err => {
+      error(notificationOptions.text = "Sorry, something went wrong :(");
+      log(err);
+      });
 }
 
 function appendArticlesMarkup(articles) {
